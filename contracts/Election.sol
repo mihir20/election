@@ -22,6 +22,9 @@ contract Election {
     }
 
     function vote(uint _cid) public{
+
+        require(!voters[msg.sender],"voter has already voted");
+        require(_cid>0 && _cid <= candidateCount,"invalid candidateID");
         voters[msg.sender] = true;
         candidates[_cid].voteCount++;
     }
