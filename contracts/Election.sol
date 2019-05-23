@@ -6,7 +6,7 @@ contract Election {
         string name;
         uint voteCount;
     }
-
+    mapping(address=>bool) public voters;
     mapping(uint=>Candidate) public candidates;
 
     uint public candidateCount;
@@ -19,6 +19,11 @@ contract Election {
     function addCandidate(string memory _name) private{
         candidateCount++;
         candidates[candidateCount] = Candidate(candidateCount,_name,0);
+    }
+
+    function vote(uint _cid) public{
+        voters[msg.sender] = true;
+        candidates[_cid].voteCount++;
     }
 
 }
