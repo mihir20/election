@@ -1,2 +1,2 @@
 # Election
-> Blockchain based election application
+Blockchain based election application
